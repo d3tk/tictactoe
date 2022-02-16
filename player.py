@@ -7,7 +7,7 @@ class Player():
         self.letter = letter
 
     def get_move(self, game):
-        pass
+        pass  # base player class
 
 
 class HumanPlayer(Player):
