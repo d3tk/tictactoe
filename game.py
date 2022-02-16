@@ -62,7 +62,7 @@ class TicTacToe():
         return self.board.count(' ')
 
     def available_moves(self):
-        return [i for i, x in enumerate(self.board) if x == " "]
+        return [i for i, spot in enumerate(self.board) if spot == " "]
 
 
 def play(game, x_player, o_player, print_game=True):
@@ -98,16 +98,27 @@ def play(game, x_player, o_player, print_game=True):
 if __name__ == '__main__':
     user_num = input('How many players? ( 1 or 2) ')
     if int(user_num) == 1:
-        who_first = input('Would you like to go first? ( Y or N) ')
-        if str(who_first).lower() == 'y':
-            x_player = HumanPlayer('X')
-            o_player = SmartComputerPlayer('O')
+        smart = input('Smart PC? ( Y or N )')
+        if str(smart).lower() == 'y':
+            who_first = input('Would you like to go first? ( Y or N) ')
+            if str(who_first).lower() == 'y':
+                x_player = HumanPlayer('X')
+                o_player = SmartComputerPlayer('O')
+            else:
+                x_player = SmartComputerPlayer('X')
+                o_player = HumanPlayer('O')
         else:
-            x_player = SmartComputerPlayer('X')
-            o_player = HumanPlayer('O')
+            who_first = input('Would you like to go first? ( Y or N) ')
+            if str(who_first).lower() == 'y':
+                x_player = HumanPlayer('X')
+                o_player = RandomComputerPlayer('O')
+            else:
+                x_player = RandomComputerPlayer('X')
+                o_player = HumanPlayer('O')
     else:
         x_player = HumanPlayer('X')
         o_player = HumanPlayer('O')
 
     t = TicTacToe()
     play(t, x_player, o_player, print_game=True)
+
