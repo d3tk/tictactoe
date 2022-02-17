@@ -5,10 +5,11 @@ theBoard = {'7': ' ', '8': ' ', '9': ' ',
 
 board_keys = []
 
+# assigns the number to the board space
 for key in theBoard:
     board_keys.append(key)
 
-
+# prints board by row
 def print_board(board):
     print(board['7'] + '|' + board['8'] + '|' + board['9'])
     print('-+-+-')
@@ -21,7 +22,7 @@ def game():
 
     turn = 'X'
     count = 0
-
+     #
     for _ in range(10):
         print_board(theBoard)
         print("It's your turn," + turn + ".Move to which place?")
@@ -34,7 +35,7 @@ def game():
         else:
             print("That place is already filled.\nMove to which place?")
             continue
-
+          # win condition
         if count >= 5:
             if theBoard['7'] == theBoard['8'] == theBoard['9'] != ' ':  # across the top
                 print_board(theBoard)
@@ -76,11 +77,12 @@ def game():
                 print("\nGame Over.\n")
                 print(" **** " + turn + " won. ****")
                 break
-
+            # full board.
         if count == 9:
             print("\nGame Over.\n")
             print("It's a Tie!!")
 
+           #switch players
         if turn == 'X':
             turn = 'O'
         else:
